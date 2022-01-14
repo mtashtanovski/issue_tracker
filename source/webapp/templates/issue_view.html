@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Issue {{ issue.pk }}{% endblock %}
+
+{% block nav %}
+    <li class="nav-item">
+        <a class="nav-link active" href="#">Создать задачу</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link active" href="#">Редактировать задачу</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link active" href="#">Удалить задачу</a>
+    </li>
+{% endblock %}
+{% block content %}
+
+    <div class="container">
+        <h1>{{ issue.summary }}</h1>
+        <p>Created at: {{ issue.created_at|date:"Y-m-d" }}</p>
+        <p><u>Status:</u> {{ issue.status }}. <u>Type:</u> {{ issue.type }}</p>
+    </div>
+    <div class="container">
+        <p>Описание задачи:</p>
+        <p>{{ issue.description }}</p>
+    </div>
+
+{% endblock %}

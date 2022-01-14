@@ -5,12 +5,12 @@
 
 {% block nav %}
     <li class="nav-item">
-        <a class="nav-link active" aria-current="page" href="#">New Issue</a>
+        <a class="nav-link active" aria-current="page" href="#">Создать задачу</a>
     </li>
 {% endblock %}
 
 {% block content %}
-        <div class="container">
+    <div class="container">
         <h1>Issues tracker</h1>
     </div>
 
@@ -20,7 +20,8 @@
                 <div class="col-md-10">
                     <div class="card">
                         <div class="card-body">
-                            <a href="#" style="text-decoration: none"><h5 class="card-title">{{ issue.summary }}</h5></a>
+                            <a href="{% url 'issue_view' issue.pk %}" style="text-decoration: none"><h5 class="card-title">{{ issue.summary }}</h5></a>
+                            <span class="badge rounded-pill bg-primary">{{ issue.type }}</span>
                             <p class="card-text">{{ issue.description|truncatechars:100 }}</p>
                             <a href="#" class="btn btn-outline-info btn-sm">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
