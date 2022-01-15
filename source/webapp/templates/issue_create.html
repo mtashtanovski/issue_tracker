@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Создание задачи{% endblock %}
+
+{% block nav %}{% endblock %}
+{% block content %}
+
+    <div class="container">
+        <h2>Создание новой задачи</h2>
+    </div>
+
+    <div class="container">
+        <form class="row g-3" method="post">
+            {% include 'partials/form.html' with button_txt="Создать" %}
+        </form>
+    </div>
+
+{% endblock %}

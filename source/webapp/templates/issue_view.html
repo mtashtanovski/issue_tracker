@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block title %}Issue {{ issue.pk }}{% endblock %}
+{% block title %}Задача {{ issue.pk }}{% endblock %}
 
 {% block nav %}
     <li class="nav-item">
@@ -18,8 +18,8 @@
 
     <div class="container">
         <h1>{{ issue.summary }}</h1>
-        <p>Created at: {{ issue.created_at|date:"Y-m-d" }}</p>
-        <p><u>Status:</u> {{ issue.status }}. <u>Type:</u> {{ issue.type }}</p>
+        <p>Дата создания: {{ issue.created_at|date:"Y-m-d" }}</p>
+        <p><u>Статус:</u> {{ issue.status }}. <u>Тип:</u> {{ issue.type }}</p>
     </div>
     <div class="container">
         <p>Описание задачи:</p>
