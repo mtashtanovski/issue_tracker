@@ -39,3 +39,40 @@ class IssueCreate(TemplateView):
                                                   type=type)
             return redirect('index')
         return render(request, 'issue_create.html', {'form': form})
+
+
+class IssueEdit(TemplateView):
+
+    def get(self, request, pk=None, *args, **kwargs):
+        issue = get_object_or_404(IssueModel, pk=pk)
+        form = IssueForm(initial={
+            'summary': issue.summary,
+            'description': issue.description,
+            'status': issue.status,
+            'type': issue.type
+        })
+        return render(request, 'issue_edit.html', {'issue': issue, 'form': form})
+
+    def post(self, request, pk=None, *args, **kwargs):
+        issue = get_object_or_404(IssueModel, pk=pk)
+        form = IssueForm(data=request.POST)
+        if form.is_valid():
+            issue.summary = form.cleaned_data.get('summary')
+            issue.description = form.cleaned_data.get('description')
+            issue.status = form.cleaned_data.get('status')
+            issue.type = form.cleaned_data.get('type')
+            issue.save()
+            return redirect('issue_view', pk=issue.pk)
+        return render(request, 'issue_edit.html', {'issue': issue, 'form': form})
+
+
+class IssueDelete(TemplateView):
+    def get(self, request, pk=None, *args, **kwargs):
+        issue = get_object_or_404(IssueModel, pk=pk)
+        return render(request, 'issue_delete.html', {'issue': issue})
+
+    def post(self, request, pk=None, *args, **kwargs):
+        issue = get_object_or_404(IssueModel, pk=pk)
+        issue.delete()
+        return redirect('index')
+

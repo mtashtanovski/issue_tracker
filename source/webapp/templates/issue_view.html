@@ -5,19 +5,19 @@
 
 {% block nav %}
     <li class="nav-item">
-        <a class="nav-link active" href="#">Создать задачу</a>
+        <a class="nav-link active" href="{% url 'issue_create' %}">Создать задачу</a>
     </li>
     <li class="nav-item">
-        <a class="nav-link active" href="#">Редактировать задачу</a>
+        <a class="nav-link active" href="{% url 'issue_edit' issue.pk %}">Редактировать задачу</a>
     </li>
     <li class="nav-item">
-        <a class="nav-link active" href="#">Удалить задачу</a>
+        <a class="nav-link active" href="{% url 'issue_delete' issue.pk %}">Удалить задачу</a>
     </li>
 {% endblock %}
 {% block content %}
 
     <div class="container">
-        <h1>{{ issue.summary }}</h1>
+        <h2>{{ issue.summary }}</h2>
         <p>Дата создания: {{ issue.created_at|date:"Y-m-d" }}</p>
         <p><u>Статус:</u> {{ issue.status }}. <u>Тип:</u> {{ issue.type }}</p>
     </div>

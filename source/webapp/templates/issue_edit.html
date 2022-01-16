@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Редактирование задачи{% endblock %}
+
+{% block nav %}
+    <li class="nav-item">
+        <a class="nav-link active" href="{% url 'issue_view' issue.pk %}">Вернуться к задаче</a>
+    </li>
+{% endblock %}
+{% block content %}
+
+    <div class="container">
+        <h2>Редактирование задачи</h2>
+    </div>
+
+    <div class="container">
+        <form class="row g-3" method="post">
+            {% include 'partials/form.html' with button_txt="Изменить" %}
+        </form>
+    </div>
+
+{% endblock %}
