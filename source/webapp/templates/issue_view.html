@@ -19,7 +19,12 @@
     <div class="container">
         <h2>{{ issue.summary }}</h2>
         <p>Дата создания: {{ issue.created_at|date:"Y-m-d" }}</p>
-        <p><u>Статус:</u> {{ issue.status }}. <u>Тип:</u> {{ issue.type }}</p>
+        <p>
+            <u>Статус:</u> {{ issue.status }}.
+            <u>Тип:</u> {% for type in issue.type.all %}
+                            {{ type.title }}{% if not forloop.last %}, {% else %}. {% endif %}
+                        {% endfor %}
+        </p>
     </div>
     <div class="container">
         <p>Описание задачи:</p>

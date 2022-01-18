@@ -5,12 +5,12 @@
 {% endfor %}
 
 {% for field in form %}
-    <div class="container">
+    <div class="container partials-input">
         <p><label for="{{ field.id_for_label }}">{{ field.label }}</label></p>
-    {% for error in field.errors %}
-        <p class="text-danger">{{ error }}</p>
-    {% endfor %}
-    {{ field }}
+        {% for error in field.errors %}
+            <p class="text-danger">{{ error }}</p>
+        {% endfor %}
+        {{ field }}
     </div>
 
 {% endfor %}

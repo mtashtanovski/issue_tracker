@@ -7,8 +7,7 @@ class IssueModel(models.Model):
     description = models.TextField(max_length=2000, null=True, blank=True, verbose_name="Описание")
     status = models.ForeignKey('webapp.StatusModel', on_delete=models.PROTECT,
                                related_name='status', verbose_name="Статус")
-    type = models.ForeignKey('webapp.TypeModel', on_delete=models.PROTECT,
-                             related_name='type', verbose_name="Тип")
+    type = models.ManyToManyField('webapp.TypeModel', related_name='type', blank=True, verbose_name="Тип")
     created_at = models.DateTimeField(auto_now_add=True, verbose_name="Дата создания")
     updated_at = models.DateTimeField(auto_now=True, verbose_name="Дата изменения")
 

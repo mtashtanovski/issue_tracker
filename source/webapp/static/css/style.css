@@ -1,3 +1,11 @@
 .badge {
     float: right;
 }
+
+.partials-input input[type=text] {
+    width: 442px;
+}
+
+.partials-input select {
+    width: 221px;
+}

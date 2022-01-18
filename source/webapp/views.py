@@ -31,13 +31,13 @@ class IssueCreate(TemplateView):
     def post(self, request, *args, **kwargs):
         form = IssueForm(data=request.POST)
         if form.is_valid():
-            summary = form.cleaned_data.get('summary')
-            description = form.cleaned_data.get('description')
-            status = form.cleaned_data.get('status')
-            type = form.cleaned_data.get('type')
-            new_issue = IssueModel.objects.create(summary=summary, description=description, status=status,
-                                                  type=type)
-            return redirect('index')
+            # summary = form.cleaned_data.get('summary')
+            # description = form.cleaned_data.get('description')
+            # status = form.cleaned_data.get('status')
+            type = form.cleaned_data.pop('type')
+            new_issue = IssueModel.objects.create(**form.cleaned_data)
+            new_issue.type.set(type)
+            return redirect('issue_view', pk=new_issue.pk)
         return render(request, 'issue_create.html', {'form': form})
 
 
@@ -49,7 +49,7 @@ class IssueEdit(TemplateView):
             'summary': issue.summary,
             'description': issue.description,
             'status': issue.status,
-            'type': issue.type
+            'type': issue.type.all()
         })
         return render(request, 'issue_edit.html', {'issue': issue, 'form': form})
 
@@ -57,10 +57,11 @@ class IssueEdit(TemplateView):
         issue = get_object_or_404(IssueModel, pk=pk)
         form = IssueForm(data=request.POST)
         if form.is_valid():
+            type = form.cleaned_data.pop('type')
+            issue.type.set(type)
             issue.summary = form.cleaned_data.get('summary')
             issue.description = form.cleaned_data.get('description')
             issue.status = form.cleaned_data.get('status')
-            issue.type = form.cleaned_data.get('type')
             issue.save()
             return redirect('issue_view', pk=issue.pk)
         return render(request, 'issue_edit.html', {'issue': issue, 'form': form})
