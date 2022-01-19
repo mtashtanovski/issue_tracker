@@ -1,9 +1,11 @@
+from django.core.validators import MinLengthValidator
 from django.db import models
 
 
 # Create your models here.
 class IssueModel(models.Model):
-    summary = models.CharField(max_length=200, null=False, blank=False, verbose_name="Заголовок")
+    summary = models.CharField(max_length=200, null=False, blank=False, verbose_name="Заголовок",
+                               validators=(MinLengthValidator(10),))
     description = models.TextField(max_length=2000, null=True, blank=True, verbose_name="Описание")
     status = models.ForeignKey('webapp.StatusModel', on_delete=models.PROTECT,
                                related_name='status', verbose_name="Статус")
