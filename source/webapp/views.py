@@ -5,6 +5,7 @@ from django.views import View
 from webapp.models import IssueModel
 from django.views.generic import TemplateView
 from webapp.forms import IssueForm
+from webapp.base import FormView as CustomView
 
 
 class IndexView(View):
@@ -23,22 +24,34 @@ class IssueView(TemplateView):
         return context
 
 
-class IssueCreate(TemplateView):
-    def get(self, request, *args, **kwargs):
-        form = IssueForm()
-        return render(request, 'issue_create.html', {'form': form})
+class IssueCreate(CustomView):
+    form_class = IssueForm
+    template_name = 'issue_create.html'
 
-    def post(self, request, *args, **kwargs):
-        form = IssueForm(data=request.POST)
-        if form.is_valid():
-            # summary = form.cleaned_data.get('summary')
-            # description = form.cleaned_data.get('description')
-            # status = form.cleaned_data.get('status')
-            type = form.cleaned_data.pop('type')
-            new_issue = IssueModel.objects.create(**form.cleaned_data)
-            new_issue.type.set(type)
-            return redirect('issue_view', pk=new_issue.pk)
-        return render(request, 'issue_create.html', {'form': form})
+    def form_valid(self, form):
+        type = form.cleaned_data.pop('type')
+        self.object = IssueModel.objects.create(**form.cleaned_data)
+        self.object.type.set(type)
+        return super().form_valid(form)
+
+    def get_redirect_url(self):
+        return redirect('issue_view', pk=self.object.pk)
+
+    # def get(self, request, *args, **kwargs):
+    #     form = IssueForm()
+    #     return render(request, 'issue_create.html', {'form': form})
+    #
+    # def post(self, request, *args, **kwargs):
+    #     form = IssueForm(data=request.POST)
+    #     if form.is_valid():
+    #         # summary = form.cleaned_data.get('summary')
+    #         # description = form.cleaned_data.get('description')
+    #         # status = form.cleaned_data.get('status')
+    #         type = form.cleaned_data.pop('type')
+    #         new_issue = IssueModel.objects.create(**form.cleaned_data)
+    #         new_issue.type.set(type)
+    #         return redirect('issue_view', pk=new_issue.pk)
+    #     return render(request, 'issue_create.html', {'form': form})
 
 
 class IssueEdit(TemplateView):
