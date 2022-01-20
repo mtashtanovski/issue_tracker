@@ -21,11 +21,23 @@
                     <div class="card">
                         <div class="card-body">
                             <a href="{% url 'issue_view' issue.pk %}" style="text-decoration: none"><h5 class="card-title">{{ issue.summary }}</h5></a>
-                            <span class="badge rounded-pill bg-primary">
+
                                 {% for type in issue.type.all %}
-                                    {{ type.title }}{% if not forloop.last %}, {% else %}. {% endif %}
+                                    {% if type.title == 'Bug' %}
+                                        <span class="badge rounded-pill bg-danger">
+                                            {{ type.title }}
+                                        </span>
+                                    {% elif type.title == 'Task' %}
+                                        <span class="badge rounded-pill bg-primary">
+                                            {{ type.title }}
+                                        </span>
+                                    {% else %}
+                                        <span class="badge rounded-pill bg-warning text-dark">
+                                            {{ type.title }}<!--{% if not forloop.last %}, {% else %}. {% endif %}-->
+                                        </span>
+                                    {% endif %}
                                 {% endfor %}
-                            </span>
+
                             <p class="card-text">{{ issue.description|truncatechars:100 }}</p>
                             <a href="{% url 'issue_edit' issue.pk %}" class="btn btn-outline-info btn-sm">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
