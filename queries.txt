@@ -1,0 +1,12 @@
+Assignment #1:
+IssueModel.objects.filter(updated_at__gt=timezone.now()-timedelta(days=30), status__title__icontains='done')
+
+Assignment #2:
+q_1 = Q(status__title__icontains='new')
+q_2 = Q(status__title__icontains='in progress')
+q_3 = Q(type__title__icontains='bug')
+q_4 = Q(type__title__icontains='enhancement')
+IssueModel.objects.filter(q_1 | q_2 & q_3 | q_4).distinct()
+
+Assignment #3:
+ IssueModel.objects.filter(Q(summary__icontains='bug') | Q(type__title__icontains='bug')).exclude(status__title__icontains='done')
