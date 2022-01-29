@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.urls import reverse
 from django.views import View
-from django.views.generic import TemplateView, FormView
+from django.views.generic import TemplateView, FormView, ListView
 
 # Create your views here.
 from webapp.base import FormView as CustomFormView
@@ -9,10 +9,26 @@ from webapp.forms import IssueForm
 from webapp.models import IssueModel
 
 
-class IndexView(View):
-    def get(self, request, *args, **kwargs):
-        issues = IssueModel.objects.order_by('-updated_at')
-        return render(request, 'index.html', {'issues': issues})
+# class IndexView(View):
+#     def get(self, request, *args, **kwargs):
+#         issues = IssueModel.objects.order_by('-updated_at')
+#         return render(request, 'index.html', {'issues': issues})
+
+class IndexView(ListView):
+    model = IssueModel
+    context_object_name = 'issues'
+    template_name = 'index.html'
+    paginate_by = 10
+    paginate_orphans = 0
+
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        return queryset.order_by('-updated_at')
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super().get_context_data(object_list=object_list, **kwargs)
+        return context
+
 
 
 class IssueCreate(CustomFormView):
