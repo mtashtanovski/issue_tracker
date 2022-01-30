@@ -31,3 +31,8 @@ class IssueForm(forms.ModelForm):
         if cleaned_data['description'] == cleaned_data['summary']:
             raise ValidationError(f"Описание задачи не должно повторять название!")
         return cleaned_data
+
+
+class SearchForm(forms.Form):
+    search = forms.CharField(max_length=30, required=False, label='Найти',
+                             widget=forms.TextInput(attrs={'class': 'myfieldclass'}))
