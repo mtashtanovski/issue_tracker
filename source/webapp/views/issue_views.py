@@ -1,12 +1,10 @@
 from django.db.models import Q
 from django.shortcuts import render, get_object_or_404, redirect
 from django.urls import reverse
-from django.utils.http import urlencode
-from django.views import View
 from django.views.generic import TemplateView, FormView, ListView
 
 # Create your views here.
-from webapp.base import FormView as CustomFormView
+from webapp.views.base_views import FormView as CustomFormView
 from webapp.forms import IssueForm, SearchForm
 from webapp.models import IssueModel
 
@@ -19,7 +17,7 @@ from webapp.models import IssueModel
 class IndexView(ListView):
     model = IssueModel
     context_object_name = 'issues'
-    template_name = 'index.html'
+    template_name = 'issue/index.html'
     paginate_by = 10
     paginate_orphans = 0
 
@@ -74,7 +72,7 @@ class IssueView(TemplateView):
 
 class IssueEdit(FormView):
     form_class = IssueForm
-    template_name = 'issue_edit.html'
+    template_name = 'issue/issue_edit.html'
 
     def dispatch(self, request, *args, **kwargs):
         self.issue = self.get_object()
@@ -104,7 +102,7 @@ class IssueEdit(FormView):
 class IssueDelete(TemplateView):
     def get(self, request, pk=None, *args, **kwargs):
         issue = get_object_or_404(IssueModel, pk=pk)
-        return render(request, 'issue_delete.html', {'issue': issue})
+        return render(request, 'issue/issue_delete.html', {'issue': issue})
 
     def post(self, request, pk=None, *args, **kwargs):
         issue = get_object_or_404(IssueModel, pk=pk)
