@@ -52,7 +52,7 @@ class IndexView(ListView):
 
 class IssueCreate(CustomFormView):
     form_class = IssueForm
-    template_name = 'issue_create.html'
+    template_name = 'issue/issue_create.html'
 
     def form_valid(self, form):
         self.object = form.save()
