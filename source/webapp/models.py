@@ -12,6 +12,12 @@ class IssueModel(models.Model):
     type = models.ManyToManyField('webapp.TypeModel', related_name='type', blank=True, verbose_name="Тип")
     created_at = models.DateTimeField(auto_now_add=True, verbose_name="Дата создания")
     updated_at = models.DateTimeField(auto_now=True, verbose_name="Дата изменения")
+    project = models.ForeignKey('webapp.ProjectModel',
+                                on_delete=models.CASCADE,
+                                related_name='issues',
+                                verbose_name="Проект",
+                                null=True,
+                                default=1)
 
     def __str__(self):
         return f"{self.pk}. {self.summary}, {self.type}, {self.status}."
@@ -44,3 +50,18 @@ class TypeModel(models.Model):
         db_table = 'types'
         verbose_name = 'Тип'
         verbose_name_plural = 'Типы'
+
+
+class ProjectModel(models.Model):
+    title = models.CharField(max_length=50, blank=True, verbose_name="Название")
+    description = models.TextField(max_length=2000, null=True, blank=True, verbose_name="Описание")
+    started = models.DateField(blank=True, verbose_name="Дата начала")
+    finished = models.DateField(null=True, verbose_name="Дата окончания")
+
+    def __str__(self):
+        return f"{self.title}"
+
+    class Meta:
+        db_table = 'projects'
+        verbose_name = 'Проект'
+        verbose_name_plural = 'Проекты'
