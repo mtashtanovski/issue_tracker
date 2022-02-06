@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Редактирование проекта{% endblock %}
+
+{% block nav %}{% endblock %}
+{% block content %}
+
+    <div class="container">
+        <h2>Редактирование проекта</h2>
+    </div>
+
+    <div class="container">
+        <form class="row g-3" method="post">
+            {% include 'partials/form.html' with button_txt="Изменить" %}
+        </form>
+    </div>
+
+{% endblock %}

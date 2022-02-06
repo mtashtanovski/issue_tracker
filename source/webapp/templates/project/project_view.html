@@ -8,10 +8,10 @@
         <a class="nav-link" href="{% url 'project_create' %}">Создать проект</a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="#">Редактировать проект</a>
+        <a class="nav-link" href="{% url 'project_edit' projectmodel.pk%}">Редактировать проект</a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="#">Удалить проект</a>
+        <a class="nav-link" href="{% url 'project_delete' projectmodel.pk %}">Удалить проект</a>
     </li>
 {% endblock %}
 {% block content %}
