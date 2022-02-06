@@ -12,12 +12,12 @@ from webapp.models import IssueModel
 # class IndexView(View):
 #     def get(self, request, *args, **kwargs):
 #         issues = IssueModel.objects.order_by('-updated_at')
-#         return render(request, 'index.html', {'issues': issues})
+#         return render(request, 'issue_list.html', {'issues': issues})
 
-class IndexView(ListView):
+class IssueListView(ListView):
     model = IssueModel
     context_object_name = 'issues'
-    template_name = 'issue/index.html'
+    template_name = 'issue/issue_list.html'
     paginate_by = 10
     paginate_orphans = 0
 

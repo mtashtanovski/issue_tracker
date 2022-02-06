@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Главная{% endblock %}
+
+{% block nav %}
+    <li class="nav-item">
+        <a class="nav-link" aria-current="page" href="{% url 'project_create' %}">Создать проект</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" aria-current="page" href="{% url 'issue_list' %}">Список задач</a>
+    </li>
+{% endblock %}
+
+{% block content %}
+
+    <div class="container">
+        <h2>Список проектов</h2>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            {% for project in projects %}
+                <div class="col-md-10">
+                    <div class="card">
+                        <div class="card-body">
+                            <a href="{% url 'project_view' project.pk %}" style="text-decoration: none"><h5 class="card-title">{{ project.title }}</h5></a>
+                            <p>{{ project.description|truncatechars:100 }}</p>
+                            <p class="card-text">Дата начала: {{ project.started }}</p>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

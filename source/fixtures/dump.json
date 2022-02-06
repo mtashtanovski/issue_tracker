@@ -7,8 +7,8 @@
     "description": "По своей сути рыбатекст является альтернативой традиционному lorem ipsum, который вызывает у некторых людей недоумение при попытках прочитать рыбу текст.",
     "status": 1,
     "created_at": "2022-01-18T08:31:32.316Z",
-    "updated_at": "2022-01-18T08:31:32.316Z",
-    "project": 1,
+    "updated_at": "2022-02-06T16:50:13.298Z",
+    "project": 2,
     "type": [
       1
     ]
@@ -192,11 +192,26 @@
     "description": "Python refactoring code is easy to do for today.",
     "status": 2,
     "created_at": "2022-01-30T09:55:31.351Z",
-    "updated_at": "2022-01-30T09:55:31.351Z",
+    "updated_at": "2022-02-06T16:41:57.210Z",
     "project": 1,
     "type": [
       2,
       3
+    ]
+  }
+},
+{
+  "model": "webapp.issuemodel",
+  "pk": 20,
+  "fields": {
+    "summary": "Project refactoring 10",
+    "description": "ProjectModel",
+    "status": 1,
+    "created_at": "2022-02-06T16:44:30.655Z",
+    "updated_at": "2022-02-06T16:44:30.655Z",
+    "project": 2,
+    "type": [
+      2
     ]
   }
 },
@@ -248,6 +263,16 @@
   "fields": {
     "title": "Создание ПО \"Issue tracker\"",
     "description": "Лорем ипсум долор сит амет, воцент нолуиссе ат пер. Аццусата дефинитионем еум ет. Цу пауло семпер аццумсан меа. Ет хис делицата инцидеринт, хинц цасе елеифенд ет сед, аудире лабитур санцтус не сит. Ин вих фиерент опортеат цонсулату, мел ид воцибус медиоцрем инцоррупте, ерант ехерци цетеро при ех.",
+    "started": "2022-02-02",
+    "finished": "2022-02-05"
+  }
+},
+{
+  "model": "webapp.projectmodel",
+  "pk": 2,
+  "fields": {
+    "title": "Test project #1",
+    "description": "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.",
     "started": "2022-02-02",
     "finished": "2022-02-05"
   }
