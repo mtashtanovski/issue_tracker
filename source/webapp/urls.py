@@ -14,8 +14,8 @@ urlpatterns = [
     path('project/create/', ProjectCreate.as_view(), name='project_create'),
 
     path('issues/list', IssueListView.as_view(), name='issue_list'),
-    path('issue/<int:pk>/view/', IssueView.as_view(template_name='issue/issue_view.html'), name='issue_view'),
+    path('issue/<int:pk>/', IssueView.as_view(), name='issue_view'),
     path('issue/create/', IssueCreate.as_view(), name='issue_create'),
     path('issue/<int:pk>/edit/', IssueEdit.as_view(), name='issue_edit'),
-    path('issue/<int:pk>/delete/', IssueDelete.as_view(template_name='issue/issue_delete.html'), name='issue_delete')
+    path('issue/<int:pk>/delete/', IssueDelete.as_view(), name='issue_delete')
 ]

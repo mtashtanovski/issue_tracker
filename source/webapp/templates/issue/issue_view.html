@@ -1,34 +1,34 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block title %}Задача {{ issue.pk }}{% endblock %}
+{% block title %}Задача {{ issuemodel.pk }}{% endblock %}
 
 {% block nav %}
     <li class="nav-item">
         <a class="nav-link active" href="{% url 'issue_create' %}">Создать задачу</a>
     </li>
     <li class="nav-item">
-        <a class="nav-link active" href="{% url 'issue_edit' issue.pk %}">Редактировать задачу</a>
+        <a class="nav-link active" href="{% url 'issue_edit' issuemodel.pk %}">Редактировать задачу</a>
     </li>
     <li class="nav-item">
-        <a class="nav-link active" href="{% url 'issue_delete' issue.pk %}">Удалить задачу</a>
+        <a class="nav-link active" href="{% url 'issue_delete' issuemodel.pk %}">Удалить задачу</a>
     </li>
 {% endblock %}
 {% block content %}
 
     <div class="container">
-        <h2>{{ issue.summary }}</h2>
-        <p>Дата создания: {{ issue.created_at|date:"Y-m-d" }}</p>
+        <h2>{{ issuemodel.summary }}</h2>
+        <p>Дата создания: {{ issuemodel.created_at|date:"Y-m-d" }}</p>
         <p>
-            <u>Статус:</u> {{ issue.status }}.
-            <u>Тип:</u> {% for type in issue.type.all %}
+            <u>Статус:</u> {{ issuemodel.status }}.
+            <u>Тип:</u> {% for type in issuemodel.type.all %}
                             {{ type.title }}{% if not forloop.last %}, {% else %}. {% endif %}
                         {% endfor %}
         </p>
     </div>
     <div class="container">
         <p>Описание задачи:</p>
-        <p>{{ issue.description }}</p>
+        <p>{{ issuemodel.description }}</p>
     </div>
 
 {% endblock %}
