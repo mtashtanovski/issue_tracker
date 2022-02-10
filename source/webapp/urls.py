@@ -12,6 +12,7 @@ from webapp.views.issue_views import (IssueListView,
                                       IssueEdit,
                                       IssueDelete
                                       )
+app_name = 'webapp'
 
 urlpatterns = [
     path('', IndexView.as_view(), name="index"),

@@ -12,7 +12,7 @@ from webapp.models import IssueModel
 # class IndexView(View):
 #     def get(self, request, *args, **kwargs):
 #         issues = IssueModel.objects.order_by('-updated_at')
-#         return render(request, 'issue_list.html', {'issues': issues})
+#         return render(request, 'webapp:issue_list.html', {'issues': issues})
 
 class IssueListView(ListView):
     model = IssueModel
@@ -59,7 +59,7 @@ class IssueCreate(CustomFormView):
         return super().form_valid(form)
 
     def get_redirect_url(self):
-        return redirect('issue_view', pk=self.object.pk)
+        return redirect('webapp:issue_view', pk=self.object.pk)
 
 
 class IssueView(DetailView):
@@ -83,7 +83,7 @@ class IssueEdit(UpdateView):
     model = IssueModel
 
     def get_success_url(self):
-        return reverse('issue_view', kwargs={'pk': self.object.pk})
+        return reverse('webapp:issue_view', kwargs={'pk': self.object.pk})
 
     # def dispatch(self, request, *args, **kwargs):
     #     self.issue = self.get_object()
@@ -104,7 +104,7 @@ class IssueEdit(UpdateView):
     #     return super().form_valid(form)
     #
     # def get_success_url(self):
-    #     return reverse('issue_view', kwargs={"pk": self.issue.pk})
+    #     return reverse('webapp:issue_view', kwargs={"pk": self.issue.pk})
     #
     # def get_object(self):
     #     return get_object_or_404(IssueModel, pk=self.kwargs.get("pk"))
@@ -113,7 +113,7 @@ class IssueEdit(UpdateView):
 class IssueDelete(DeleteView):
     model = IssueModel
     template_name = 'issue/issue_delete.html'
-    success_url = reverse_lazy('issue_list')
+    success_url = reverse_lazy('webapp:issue_list')
     # def get(self, request, pk=None, *args, **kwargs):
     #     issue = get_object_or_404(IssueModel, pk=pk)
     #     return render(request, 'issue/issue_delete.html', {'issue': issue})
