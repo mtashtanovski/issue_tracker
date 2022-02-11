@@ -1,3 +1,4 @@
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.db.models import Q
 from django.shortcuts import render, get_object_or_404, redirect
 from django.urls import reverse, reverse_lazy
@@ -50,7 +51,7 @@ class IssueListView(ListView):
             return self.form.cleaned_data.get('search')
 
 
-class IssueCreate(CustomFormView):
+class IssueCreate(LoginRequiredMixin, CustomFormView):
     form_class = IssueForm
     template_name = 'issue/issue_create.html'
 
@@ -77,7 +78,7 @@ class IssueView(DetailView):
     #     return context
 
 
-class IssueEdit(UpdateView):
+class IssueEdit(LoginRequiredMixin, UpdateView):
     form_class = IssueForm
     template_name = 'issue/issue_edit.html'
     model = IssueModel
@@ -110,7 +111,7 @@ class IssueEdit(UpdateView):
     #     return get_object_or_404(IssueModel, pk=self.kwargs.get("pk"))
 
 
-class IssueDelete(DeleteView):
+class IssueDelete(LoginRequiredMixin, DeleteView):
     model = IssueModel
     template_name = 'issue/issue_delete.html'
     success_url = reverse_lazy('webapp:issue_list')

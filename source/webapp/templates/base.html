@@ -21,9 +21,23 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
-                    {% block nav %}
 
-                    {% endblock %}
+                    {% if not user.is_authenticated %}
+                        <li class="nav-item">
+                            <a class="nav-link" aria-current="page" href="{% url 'accounts:login' %}">Вход</a>
+                        </li>
+                    {% else %}
+                        {% block nav %}{% endblock %}
+                        <li class="nav-item">
+                            <a class="nav-link" aria-current="page" href="{% url 'webapp:project_create' %}">Создать проект</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" aria-current="page" href="{% url 'webapp:issue_list' %}">Список задач</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" aria-current="page" href="{% url 'accounts:logout' %}">Выход</a>
+                        </li>
+                    {% endif %}
                 </ul>
             </div>
         </div>
