@@ -11,8 +11,9 @@ class MyUserCreationForm(UserCreationForm):
         cleaned_data = super().clean()
         first_name = cleaned_data.get("first_name")
         last_name = cleaned_data.get("last_name")
-        if not first_name or last_name:
-            raise ValidationError("Заполните Имя или Фамилию")
+        if not first_name:
+            if not last_name:
+                raise ValidationError("Заполните Имя или Фамилию")
         return cleaned_data
 
     class Meta(UserCreationForm.Meta):
