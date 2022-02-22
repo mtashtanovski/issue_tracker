@@ -5,6 +5,9 @@
 .partials-input input[type=text] {
     width: 442px;
 }
+.partials-input input[type=password] {
+    width: 442px;
+}
 
 .partials-input select {
     width: 221px;
