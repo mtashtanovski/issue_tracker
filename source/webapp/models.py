@@ -1,5 +1,8 @@
 from django.core.validators import MinLengthValidator
 from django.db import models
+from django.contrib.auth import get_user_model
+
+User = get_user_model()
 
 
 # Create your models here.
@@ -53,10 +56,11 @@ class TypeModel(models.Model):
 
 
 class ProjectModel(models.Model):
-    title = models.CharField(max_length=50, blank=True, verbose_name="Название")
+    title = models.CharField(max_length=50, blank=False, verbose_name="Название")
     description = models.TextField(max_length=2000, null=True, blank=True, verbose_name="Описание")
-    started = models.DateField(blank=True, verbose_name="Дата начала")
-    finished = models.DateField(null=True, verbose_name="Дата окончания")
+    started = models.DateField(null=False, blank=False, verbose_name="Дата начала")
+    finished = models.DateField(null=True, blank=True, verbose_name="Дата окончания")
+    user = models.ManyToManyField(User, related_name='users', verbose_name="Пользователь")
 
     def __str__(self):
         return f"{self.title}"
