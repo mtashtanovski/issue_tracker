@@ -3,7 +3,11 @@
 
 {% block title %}Редактирование проекта{% endblock %}
 
-{% block nav %}{% endblock %}
+{% block nav %}
+    <li class="nav-item">
+        <a class="nav-link active" href="{% url 'webapp:project_view' projectmodel.pk %}">Вернуться к проекту</a>
+    </li>
+{% endblock %}
 {% block content %}
 
     <div class="container">

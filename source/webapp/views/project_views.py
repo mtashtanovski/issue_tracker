@@ -28,12 +28,12 @@ class ProjectView(DetailView):
         context = super().get_context_data(**kwargs)
         issues = self.object.issues.order_by('-created_at')
         context['issues'] = issues
-        print(context)
+        # print(context)
         return context
 
 
 class ProjectCreate(PermissionRequiredMixin, CreateView):
-    permission_required = 'webapp.add_project'
+    permission_required = 'webapp.add_projectmodel'
     model = ProjectModel
     form_class = ProjectForm
     template_name = 'project/project_create.html'
@@ -41,16 +41,14 @@ class ProjectCreate(PermissionRequiredMixin, CreateView):
     def get_success_url(self):
         return reverse('webapp:project_view', kwargs={'pk': self.object.pk})
 
-    def has_permission(self):
-        return super().has_permission() or self.request.user.username == self.get_object().user
-
-    def form_valid(self, form):
-        form.instance.user = self.request.user
-        return super().form_valid(form)
+    # def form_valid(self, form):
+    #     user = form.cleaned_data.pop('user')
+    #     print(user)
+    #     return super().form_valid(form)
 
 
 class ProjectEdit(PermissionRequiredMixin, UpdateView):
-    permission_required = 'webapp.change_project'
+    permission_required = 'webapp.change_projectmodel'
     form_class = ProjectForm
     template_name = 'project/project_edit.html'
     model = ProjectModel
@@ -67,7 +65,7 @@ class ProjectEdit(PermissionRequiredMixin, UpdateView):
 
 
 class ProjectDelete(PermissionRequiredMixin, DeleteView):
-    permission_required = 'webapp.delete_project'
+    permission_required = 'webapp.delete_projectmodel'
     model = ProjectModel
     template_name = 'project/project_delete.html'
     success_url = reverse_lazy('webapp:index')
