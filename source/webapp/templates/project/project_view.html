@@ -19,10 +19,16 @@
         <p>Дата начала: {{ projectmodel.started }}</p>
     </div>
     <div class="container">
+        <h2>Список участников:</h2>
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">{{ user.username }}</li>
+        </ul>
+    </div>
+    <div class="container">
         <h2>Список задач:</h2>
         {% if user.is_authenticated %}
         <div class="container">
-            <h3><a href="{% url 'webapp:issue_create' %}" style="text-decoration: none">Добавить задачу</a></h3>
+            <h3><a href="{% url 'webapp:issue_create' %}" style="text-decoration: none">+ Добавить задачу</a></h3>
         </div>
         {% endif %}
         <div class="row">

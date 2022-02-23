@@ -1,9 +1,8 @@
-from django.shortcuts import render, get_object_or_404, redirect
-from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
 from django.urls import reverse, reverse_lazy
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 
-from webapp.models import ProjectModel, IssueModel
+from webapp.models import ProjectModel
 from webapp.forms import ProjectForm
 
 
@@ -33,7 +32,8 @@ class ProjectView(DetailView):
         return context
 
 
-class ProjectCreate(LoginRequiredMixin, CreateView):
+class ProjectCreate(PermissionRequiredMixin, CreateView):
+    permission_required = 'webapp.add_project'
     model = ProjectModel
     form_class = ProjectForm
     template_name = 'project/project_create.html'
@@ -41,8 +41,16 @@ class ProjectCreate(LoginRequiredMixin, CreateView):
     def get_success_url(self):
         return reverse('webapp:project_view', kwargs={'pk': self.object.pk})
 
+    def has_permission(self):
+        return super().has_permission() or self.request.user.username == self.get_object().user
 
-class ProjectEdit(LoginRequiredMixin, UpdateView):
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        return super().form_valid(form)
+
+
+class ProjectEdit(PermissionRequiredMixin, UpdateView):
+    permission_required = 'webapp.change_project'
     form_class = ProjectForm
     template_name = 'project/project_edit.html'
     model = ProjectModel
@@ -50,8 +58,16 @@ class ProjectEdit(LoginRequiredMixin, UpdateView):
     def get_success_url(self):
         return reverse('webapp:project_view', kwargs={'pk': self.object.pk})
 
+    def has_permission(self):
+        return super().has_permission() or self.request.user == self.get_object().user
 
-class ProjectDelete(LoginRequiredMixin, DeleteView):
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        return super().form_valid(form)
+
+
+class ProjectDelete(PermissionRequiredMixin, DeleteView):
+    permission_required = 'webapp.delete_project'
     model = ProjectModel
     template_name = 'project/project_delete.html'
     success_url = reverse_lazy('webapp:index')

@@ -107,22 +107,6 @@
 },
 {
   "model": "webapp.issuemodel",
-  "pk": 14,
-  "fields": {
-    "summary": "Домашнее задание №51",
-    "description": "Ид мунди омиттам иус, нам аудире ехпетенда ех. Но яуо сусципит антиопам, яуот цонсулату нец ид. Прима дицам воцибус еу вис, пробо луптатум те иус. Ан персецути цонсететур сеа.",
-    "status": 3,
-    "created_at": "2022-01-21T12:59:51.431Z",
-    "updated_at": "2022-01-21T12:59:51.431Z",
-    "project": 1,
-    "type": [
-      1,
-      2
-    ]
-  }
-},
-{
-  "model": "webapp.issuemodel",
   "pk": 15,
   "fields": {
     "summary": "Записать данные в БД",
@@ -201,21 +185,6 @@
   }
 },
 {
-  "model": "webapp.issuemodel",
-  "pk": 20,
-  "fields": {
-    "summary": "Project refactoring 10",
-    "description": "ProjectModel",
-    "status": 1,
-    "created_at": "2022-02-06T16:44:30.655Z",
-    "updated_at": "2022-02-06T16:44:30.655Z",
-    "project": 2,
-    "type": [
-      2
-    ]
-  }
-},
-{
   "model": "webapp.statusmodel",
   "pk": 1,
   "fields": {
@@ -264,7 +233,8 @@
     "title": "Создание ПО \"Issue tracker\"",
     "description": "Лорем ипсум долор сит амет, воцент нолуиссе ат пер. Аццусата дефинитионем еум ет. Цу пауло семпер аццумсан меа. Ет хис делицата инцидеринт, хинц цасе елеифенд ет сед, аудире лабитур санцтус не сит. Ин вих фиерент опортеат цонсулату, мел ид воцибус медиоцрем инцоррупте, ерант ехерци цетеро при ех.",
     "started": "2022-02-02",
-    "finished": "2022-02-05"
+    "finished": "2022-02-05",
+    "user": []
   }
 },
 {
@@ -274,7 +244,19 @@
     "title": "Test project #1",
     "description": "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.",
     "started": "2022-02-02",
-    "finished": "2022-02-05"
+    "finished": "2022-02-05",
+    "user": []
+  }
+},
+{
+  "model": "webapp.projectmodel",
+  "pk": 3,
+  "fields": {
+    "title": "Тестовый проект №2",
+    "description": "Товарищи! реализация намеченных плановых заданий в значительной степени обуславливает создание существенных финансовых и административных условий. Разнообразный и богатый опыт реализация намеченных плановых заданий в значительной степени обуславливает создание позиций, занимаемых участниками в отношении поставленных задач.",
+    "started": "2022-02-21",
+    "finished": "2022-02-28",
+    "user": []
   }
 },
 {
@@ -282,7 +264,7 @@
   "pk": 1,
   "fields": {
     "password": "pbkdf2_sha256$320000$JDZcpk9C1zLrqmbWqDaOV8$UmP3B4QD8VW62pWhTdNi+XPx1tmb6Usc7zLhkUumHCI=",
-    "last_login": "2022-02-01T15:00:34.644Z",
+    "last_login": "2022-02-23T08:52:12.641Z",
     "is_superuser": true,
     "username": "admin",
     "first_name": "",
@@ -292,6 +274,66 @@
     "is_active": true,
     "date_joined": "2022-01-18T08:27:34.691Z",
     "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 10,
+  "fields": {
+    "password": "pbkdf2_sha256$320000$K9jpsqgmXZSGMjCVvSpN4z$C6Q67Y+xOBzbLuSR0xst9wYJlhtwfJwrrFd1AGmK1k4=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "manager",
+    "first_name": "Days",
+    "last_name": "Gone",
+    "email": "emaill@mail.ru",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2022-02-23T08:55:05Z",
+    "groups": [
+      1
+    ],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 11,
+  "fields": {
+    "password": "pbkdf2_sha256$320000$uSLJvhLea5ETahfGze1U5z$4/rZRSfCUUxt4vHY8+6r0MMN8xjTGjzjA0fvQuJlyIc=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "lead",
+    "first_name": "Among",
+    "last_name": "Us",
+    "email": "gmaill@mail.ru",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2022-02-23T08:56:07Z",
+    "groups": [
+      2
+    ],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 12,
+  "fields": {
+    "password": "pbkdf2_sha256$320000$s0wimWJm9UTtZsjYBeaubJ$g9xRdJAAwmiBxwbIunJgKIV8krV3SWQnWmuOOnpy+9s=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "dev",
+    "first_name": "Mine",
+    "last_name": "Craft",
+    "email": "zetmaill@mail.ru",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2022-02-23T08:56:46Z",
+    "groups": [
+      3
+    ],
     "user_permissions": []
   }
 }
