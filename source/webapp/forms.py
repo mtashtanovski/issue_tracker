@@ -41,7 +41,7 @@ class SearchForm(forms.Form):
 class ProjectForm(forms.ModelForm):
     class Meta:
         model = ProjectModel
-        exclude = []
+        exclude = ('users',)
         widgets = {
             'description': forms.Textarea(attrs={'rows': 5, 'cols': 50}),
         }

@@ -28,7 +28,6 @@ class ProjectView(DetailView):
         context = super().get_context_data(**kwargs)
         issues = self.object.issues.order_by('-created_at')
         context['issues'] = issues
-        # print(context)
         return context
 
 
@@ -40,11 +39,11 @@ class ProjectCreate(PermissionRequiredMixin, CreateView):
 
     def get_success_url(self):
         return reverse('webapp:project_view', kwargs={'pk': self.object.pk})
-
-    # def form_valid(self, form):
-    #     user = form.cleaned_data.pop('user')
-    #     print(user)
-    #     return super().form_valid(form)
+    
+    def form_valid(self, form):
+        response = super(ProjectCreate, self).form_valid(form)
+        self.object.users.add(self.request.user)
+        return response
 
 
 class ProjectEdit(PermissionRequiredMixin, UpdateView):
