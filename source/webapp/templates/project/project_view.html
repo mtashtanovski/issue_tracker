@@ -10,6 +10,9 @@
     <li class="nav-item">
         <a class="nav-link" href="{% url 'webapp:project_delete' projectmodel.pk %}">Удалить проект</a>
     </li>
+    <li class="nav-item">
+        <a class="nav-link" href="{% url 'webapp:chang_project_users' projectmodel.pk %}">Список пользователей</a>
+    </li>
 {% endblock %}
 {% block content %}
 
@@ -21,7 +24,11 @@
     <div class="container">
         <h2>Список участников:</h2>
         <ul class="list-group list-group-flush">
-            <li class="list-group-item">{{ user.username }}</li>
+            {% for user_pr in projectmodel.users.all %}
+                <li class="list-group-item">{{ user_pr.username }}</li>
+            {% empty %}
+                <li>В проекте пока нет пользователей.</li>
+            {% endfor %}
         </ul>
     </div>
     <div class="container">

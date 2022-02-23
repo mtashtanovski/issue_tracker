@@ -45,3 +45,9 @@ class ProjectForm(forms.ModelForm):
         widgets = {
             'description': forms.Textarea(attrs={'rows': 5, 'cols': 50}),
         }
+
+
+class ProjectUsersForm(forms.ModelForm):
+    class Meta:
+        model = ProjectModel
+        fields = ('users',)

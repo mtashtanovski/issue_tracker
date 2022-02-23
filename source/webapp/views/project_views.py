@@ -3,7 +3,7 @@ from django.urls import reverse, reverse_lazy
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 
 from webapp.models import ProjectModel
-from webapp.forms import ProjectForm
+from webapp.forms import ProjectForm, ProjectUsersForm
 
 
 class IndexView(ListView):
@@ -69,3 +69,12 @@ class ProjectDelete(PermissionRequiredMixin, DeleteView):
     model = ProjectModel
     template_name = 'project/project_delete.html'
     success_url = reverse_lazy('webapp:index')
+
+
+class ChangeProjectUsers(UpdateView):
+    model = ProjectModel
+    template_name = 'project/change_users.html'
+    form_class = ProjectUsersForm
+
+    def get_success_url(self):
+        return reverse('webapp:project_view', kwargs={'pk': self.object.pk})
