@@ -31,9 +31,11 @@
                         </li>
                     {% else %}
                         {% block nav %}{% endblock %}
+                        {% if perms.webapp.add_projectmodel %}
                         <li class="nav-item">
                             <a class="nav-link" aria-current="page" href="{% url 'webapp:project_create' %}">Создать проект</a>
                         </li>
+                        {% endif %}
                         <li class="nav-item">
                             <a class="nav-link" aria-current="page" href="{% url 'webapp:issue_list' %}">Список задач</a>
                         </li>
