@@ -176,10 +176,10 @@
     "description": "Python refactoring code is easy to do for today.",
     "status": 2,
     "created_at": "2022-01-30T09:55:31.351Z",
-    "updated_at": "2022-02-06T16:41:57.210Z",
+    "updated_at": "2022-02-24T07:54:24.277Z",
     "project": 1,
     "type": [
-      2,
+      1,
       3
     ]
   }
@@ -234,7 +234,10 @@
     "description": "Лорем ипсум долор сит амет, воцент нолуиссе ат пер. Аццусата дефинитионем еум ет. Цу пауло семпер аццумсан меа. Ет хис делицата инцидеринт, хинц цасе елеифенд ет сед, аудире лабитур санцтус не сит. Ин вих фиерент опортеат цонсулату, мел ид воцибус медиоцрем инцоррупте, ерант ехерци цетеро при ех.",
     "started": "2022-02-02",
     "finished": "2022-02-05",
-    "user": []
+    "users": [
+      13,
+      14
+    ]
   }
 },
 {
@@ -245,18 +248,10 @@
     "description": "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.",
     "started": "2022-02-02",
     "finished": "2022-02-05",
-    "user": []
-  }
-},
-{
-  "model": "webapp.projectmodel",
-  "pk": 3,
-  "fields": {
-    "title": "Тестовый проект №2",
-    "description": "Товарищи! реализация намеченных плановых заданий в значительной степени обуславливает создание существенных финансовых и административных условий. Разнообразный и богатый опыт реализация намеченных плановых заданий в значительной степени обуславливает создание позиций, занимаемых участниками в отношении поставленных задач.",
-    "started": "2022-02-21",
-    "finished": "2022-02-28",
-    "user": []
+    "users": [
+      13,
+      15
+    ]
   }
 },
 {
@@ -264,7 +259,7 @@
   "pk": 1,
   "fields": {
     "password": "pbkdf2_sha256$320000$JDZcpk9C1zLrqmbWqDaOV8$UmP3B4QD8VW62pWhTdNi+XPx1tmb6Usc7zLhkUumHCI=",
-    "last_login": "2022-02-23T08:52:12.641Z",
+    "last_login": "2022-02-24T07:52:10.060Z",
     "is_superuser": true,
     "username": "admin",
     "first_name": "",
@@ -279,61 +274,79 @@
 },
 {
   "model": "auth.user",
-  "pk": 10,
+  "pk": 13,
   "fields": {
-    "password": "pbkdf2_sha256$320000$K9jpsqgmXZSGMjCVvSpN4z$C6Q67Y+xOBzbLuSR0xst9wYJlhtwfJwrrFd1AGmK1k4=",
-    "last_login": null,
+    "password": "pbkdf2_sha256$320000$4pI7MdNqcbquODH9daJi96$NBHlSettrbfcbes7jdRsAkaQgv8aMqjvdvVBR0c8+Lo=",
+    "last_login": "2022-02-24T11:12:29.184Z",
     "is_superuser": false,
     "username": "manager",
     "first_name": "Days",
     "last_name": "Gone",
-    "email": "emaill@mail.ru",
+    "email": "email@mail.ru",
     "is_staff": false,
     "is_active": true,
-    "date_joined": "2022-02-23T08:55:05Z",
+    "date_joined": "2022-02-24T07:47:07Z",
     "groups": [
-      1
+      4
     ],
     "user_permissions": []
   }
 },
 {
   "model": "auth.user",
-  "pk": 11,
+  "pk": 14,
   "fields": {
-    "password": "pbkdf2_sha256$320000$uSLJvhLea5ETahfGze1U5z$4/rZRSfCUUxt4vHY8+6r0MMN8xjTGjzjA0fvQuJlyIc=",
-    "last_login": null,
+    "password": "pbkdf2_sha256$320000$tyaC9JtsQiQdGmhxEqpZv3$UDeLussi712A/Jgh7IZOciWN9Q57EcKDzb3QvUYs+gs=",
+    "last_login": "2022-02-24T08:03:55.856Z",
     "is_superuser": false,
-    "username": "lead",
+    "username": "team_lead",
     "first_name": "Among",
     "last_name": "Us",
-    "email": "gmaill@mail.ru",
+    "email": "",
     "is_staff": false,
     "is_active": true,
-    "date_joined": "2022-02-23T08:56:07Z",
+    "date_joined": "2022-02-24T07:48:13Z",
     "groups": [
-      2
+      5
     ],
     "user_permissions": []
   }
 },
 {
   "model": "auth.user",
-  "pk": 12,
+  "pk": 15,
   "fields": {
-    "password": "pbkdf2_sha256$320000$s0wimWJm9UTtZsjYBeaubJ$g9xRdJAAwmiBxwbIunJgKIV8krV3SWQnWmuOOnpy+9s=",
-    "last_login": null,
+    "password": "pbkdf2_sha256$320000$fQRXvfaQ4Fq7t6NqokToxn$LPz/mrVOxMEHkc5j+cmKvf+AKp9Y5GyebWpqsOteJHc=",
+    "last_login": "2022-02-24T08:25:04.336Z",
     "is_superuser": false,
     "username": "dev",
     "first_name": "Mine",
     "last_name": "Craft",
-    "email": "zetmaill@mail.ru",
+    "email": "gomail@mail.ru",
     "is_staff": false,
     "is_active": true,
-    "date_joined": "2022-02-23T08:56:46Z",
+    "date_joined": "2022-02-24T07:48:40Z",
     "groups": [
-      3
+      6
     ],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 16,
+  "fields": {
+    "password": "pbkdf2_sha256$320000$I7BvaQkmNeuy8PExmo8Eab$oF1VZFwWs0GHvDVIfHWQhcBpyrHmMO+2qfb0IUn40Mw=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "vasiliy",
+    "first_name": "Vasiliy",
+    "last_name": "Zaicev",
+    "email": "gmaill@mail.ru",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2022-02-24T07:53:02Z",
+    "groups": [],
     "user_permissions": []
   }
 }

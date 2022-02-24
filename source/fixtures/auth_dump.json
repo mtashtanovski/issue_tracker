@@ -1,22 +1,22 @@
 [
 {
   "model": "auth.group",
-  "pk": 1,
+  "pk": 4,
   "fields": {
     "name": "Project Manager",
     "permissions": [
       [
-        "add_issuemodel",
+        "add_issue_in_own_project",
         "webapp",
         "issuemodel"
       ],
       [
-        "change_issuemodel",
+        "change_issue_in_own_project",
         "webapp",
         "issuemodel"
       ],
       [
-        "delete_issuemodel",
+        "delete_issue_in_own_project",
         "webapp",
         "issuemodel"
       ],
@@ -31,7 +31,17 @@
         "projectmodel"
       ],
       [
+        "change_user_in_own_project",
+        "webapp",
+        "projectmodel"
+      ],
+      [
         "delete_projectmodel",
+        "webapp",
+        "projectmodel"
+      ],
+      [
+        "view_projectmodel",
         "webapp",
         "projectmodel"
       ]
@@ -40,41 +50,46 @@
 },
 {
   "model": "auth.group",
-  "pk": 2,
+  "pk": 5,
   "fields": {
     "name": "Team Lead",
     "permissions": [
       [
-        "add_issuemodel",
+        "add_issue_in_own_project",
         "webapp",
         "issuemodel"
       ],
       [
-        "change_issuemodel",
+        "change_issue_in_own_project",
         "webapp",
         "issuemodel"
       ],
       [
-        "delete_issuemodel",
+        "delete_issue_in_own_project",
         "webapp",
         "issuemodel"
+      ],
+      [
+        "change_user_in_own_project",
+        "webapp",
+        "projectmodel"
       ]
     ]
   }
 },
 {
   "model": "auth.group",
-  "pk": 3,
+  "pk": 6,
   "fields": {
     "name": "Developer",
     "permissions": [
       [
-        "add_issuemodel",
+        "add_issue_in_own_project",
         "webapp",
         "issuemodel"
       ],
       [
-        "change_issuemodel",
+        "change_issue_in_own_project",
         "webapp",
         "issuemodel"
       ]
@@ -86,7 +101,7 @@
   "pk": 1,
   "fields": {
     "password": "pbkdf2_sha256$320000$JDZcpk9C1zLrqmbWqDaOV8$UmP3B4QD8VW62pWhTdNi+XPx1tmb6Usc7zLhkUumHCI=",
-    "last_login": "2022-02-23T08:52:12.641Z",
+    "last_login": "2022-02-24T07:52:10.060Z",
     "is_superuser": true,
     "username": "admin",
     "first_name": "",
@@ -101,18 +116,18 @@
 },
 {
   "model": "auth.user",
-  "pk": 10,
+  "pk": 13,
   "fields": {
-    "password": "pbkdf2_sha256$320000$K9jpsqgmXZSGMjCVvSpN4z$C6Q67Y+xOBzbLuSR0xst9wYJlhtwfJwrrFd1AGmK1k4=",
-    "last_login": null,
+    "password": "pbkdf2_sha256$320000$4pI7MdNqcbquODH9daJi96$NBHlSettrbfcbes7jdRsAkaQgv8aMqjvdvVBR0c8+Lo=",
+    "last_login": "2022-02-24T11:12:29.184Z",
     "is_superuser": false,
     "username": "manager",
     "first_name": "Days",
     "last_name": "Gone",
-    "email": "emaill@mail.ru",
+    "email": "email@mail.ru",
     "is_staff": false,
     "is_active": true,
-    "date_joined": "2022-02-23T08:55:05Z",
+    "date_joined": "2022-02-24T07:47:07Z",
     "groups": [
       [
         "Project Manager"
@@ -123,18 +138,18 @@
 },
 {
   "model": "auth.user",
-  "pk": 11,
+  "pk": 14,
   "fields": {
-    "password": "pbkdf2_sha256$320000$uSLJvhLea5ETahfGze1U5z$4/rZRSfCUUxt4vHY8+6r0MMN8xjTGjzjA0fvQuJlyIc=",
-    "last_login": null,
+    "password": "pbkdf2_sha256$320000$tyaC9JtsQiQdGmhxEqpZv3$UDeLussi712A/Jgh7IZOciWN9Q57EcKDzb3QvUYs+gs=",
+    "last_login": "2022-02-24T08:03:55.856Z",
     "is_superuser": false,
-    "username": "lead",
+    "username": "team_lead",
     "first_name": "Among",
     "last_name": "Us",
-    "email": "gmaill@mail.ru",
+    "email": "",
     "is_staff": false,
     "is_active": true,
-    "date_joined": "2022-02-23T08:56:07Z",
+    "date_joined": "2022-02-24T07:48:13Z",
     "groups": [
       [
         "Team Lead"
@@ -145,23 +160,41 @@
 },
 {
   "model": "auth.user",
-  "pk": 12,
+  "pk": 15,
   "fields": {
-    "password": "pbkdf2_sha256$320000$s0wimWJm9UTtZsjYBeaubJ$g9xRdJAAwmiBxwbIunJgKIV8krV3SWQnWmuOOnpy+9s=",
-    "last_login": null,
+    "password": "pbkdf2_sha256$320000$fQRXvfaQ4Fq7t6NqokToxn$LPz/mrVOxMEHkc5j+cmKvf+AKp9Y5GyebWpqsOteJHc=",
+    "last_login": "2022-02-24T08:25:04.336Z",
     "is_superuser": false,
     "username": "dev",
     "first_name": "Mine",
     "last_name": "Craft",
-    "email": "zetmaill@mail.ru",
+    "email": "gomail@mail.ru",
     "is_staff": false,
     "is_active": true,
-    "date_joined": "2022-02-23T08:56:46Z",
+    "date_joined": "2022-02-24T07:48:40Z",
     "groups": [
       [
         "Developer"
       ]
     ],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 16,
+  "fields": {
+    "password": "pbkdf2_sha256$320000$I7BvaQkmNeuy8PExmo8Eab$oF1VZFwWs0GHvDVIfHWQhcBpyrHmMO+2qfb0IUn40Mw=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "vasiliy",
+    "first_name": "Vasiliy",
+    "last_name": "Zaicev",
+    "email": "gmaill@mail.ru",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2022-02-24T07:53:02Z",
+    "groups": [],
     "user_permissions": []
   }
 }
