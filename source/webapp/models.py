@@ -29,6 +29,11 @@ class IssueModel(models.Model):
         db_table = 'issues'
         verbose_name = 'Задача'
         verbose_name_plural = 'Задачи'
+        permissions = (
+            ("add_issue_in_own_project", "Добавлять задачи в свой проект"),
+            ("change_issue_in_own_project", "Изменять задачи в своем проекте"),
+            ("delete_issue_in_own_project", "Удалять задачи в своем проекте"),
+        )
 
 
 class StatusModel(models.Model):
@@ -69,3 +74,6 @@ class ProjectModel(models.Model):
         db_table = 'projects'
         verbose_name = 'Проект'
         verbose_name_plural = 'Проекты'
+        permissions = (
+            ("change_user_in_own_project", "Изменять список пользователей в своем проекте"),
+        )
