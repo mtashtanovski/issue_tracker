@@ -1,4 +1,7 @@
 <div class="row">
+    {% if is_paginated %}
+        {% include 'partials/pagination.html' %}
+    {% endif %}
     {% for project in projects %}
         <div class="col-md-10">
             <div class="card">
@@ -29,4 +32,8 @@
     {% empty %}
         <p>Не найдено тукущих проектов...</p>
     {% endfor %}
+
+    {% if is_paginated %}
+        {% include 'partials/pagination.html' %}
+    {% endif %}
 </div>
