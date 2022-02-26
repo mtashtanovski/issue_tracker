@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Профиль {{ user.pk }}{% endblock title %}
+
+
+{% block content %}
+    <div class="container">
+        <h2>Профиль пользователя {{ user_object.username }}</h2>
+    </div>
+    <div class="container col-xxl-8 px-4 py-5">
+        <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
+            <div class="col-lg-6">
+                <h1 class="display-5 fw-bold lh-1 mb-3">{{ product.title }}</h1>
+                <p><strong>Имя:</strong> {{ user_object.first_name|default:"Не указанo" }}</p>
+                <p><strong>Фамилия:</strong> {{ user_object.last_name|default:"Не указана" }}</p>
+                <p><strong>Дата рождения:</strong> {{ user_object.profile.birth_date|date:'d.m.Y'|default:"Не указана" }}</p>
+                <p><strong>Почта:</strong> {{ user_object.email|default:"Не указана"}}</p>
+                <p class="lead">О себе: {{ product.description }}</p>
+                <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+                    <strong>Профиль GitHub:</strong> {{ user_object.git_profile|default:"Не указан"}}
+                </div>
+            </div>
+            <div class="col-lg-6">
+                {% if user_object.profile.avatar %}
+                    <img src="{{ user_object.profile.avatar.url }}" alt="user avatar">
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <h3><strong>Участие в проектах:</strong></h3>
+        {% include "partials/projects_list.html" %}
+    </div>
+{% endblock content %}
+

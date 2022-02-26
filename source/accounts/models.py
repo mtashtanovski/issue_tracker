@@ -20,12 +20,12 @@ class Profile(models.Model):
         verbose_name="Аватар",
         upload_to="avatars/",
         null=True,
-        blank=False
+        blank=True
     )
 
     git_profile = models.URLField(
         null=True,
-        blank=False,
+        blank=True,
         max_length=128,
         verbose_name="Профиль GitHub"
     )
@@ -33,7 +33,7 @@ class Profile(models.Model):
     about_me = models.TextField(
         max_length=2000,
         null=True,
-        blank=False,
+        blank=True,
         verbose_name="О себе")
 
     class Meta:
