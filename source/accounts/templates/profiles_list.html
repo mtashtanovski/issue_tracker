@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Список пользователей{% endblock title %}
+
+{% block content %}
+
+    <div class="container">
+        <div class="my-3 p-3 bg-body rounded shadow-sm">
+            <h4 class="border-bottom pb-2 mb-0">Список всех пользователей</h4>
+
+            {% for profile in profiles %}
+            <div class="d-flex text-muted pt-3">
+                <div class="pb-3 mb-0 small lh-sm border-bottom w-100">
+                    <div class="d-flex justify-content-between">
+                        <strong class="text-gray-dark">
+                            <a href="{% url 'accounts:user_profile' pk=profile.user.pk %}">
+                                {{ profile.user.first_name|default:"Не указанo" }}
+                                {{ profile.user.last_name|default:"Не указанo" }}
+                            </a>
+                        </strong>
+                    </div>
+                    <span class="d-block">@{{ profile.user.username }}</span>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+{% endblock content %}

@@ -11,7 +11,7 @@
     <div class="container col-xxl-8 px-4 py-5">
         <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
             <div class="col-lg-6">
-                <h1 class="display-5 fw-bold lh-1 mb-3">{{ product.title }}</h1>
+                <h5 class="display-5 fw-bold lh-1 mb-3">@{{ user_object.username }}</h5>
                 <p><strong>Имя:</strong> {{ user_object.first_name|default:"Не указанo" }}</p>
                 <p><strong>Фамилия:</strong> {{ user_object.last_name|default:"Не указана" }}</p>
                 <p><strong>Дата рождения:</strong> {{ user_object.profile.birth_date|date:'d.m.Y'|default:"Не указана" }}</p>

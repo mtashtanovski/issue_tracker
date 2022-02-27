@@ -1,12 +1,12 @@
 from django.contrib.auth import authenticate, login, logout, get_user_model
-from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
 from django.contrib.auth.models import User
 from django.shortcuts import render, redirect
 from django.core.paginator import Paginator
 
 # Create your views here.
 from django.urls import reverse
-from django.views.generic import CreateView, DetailView
+from django.views.generic import CreateView, DetailView, ListView
 from accounts.forms import MyUserCreationForm
 from accounts.models import Profile
 
@@ -74,5 +74,20 @@ class UserProfileView(LoginRequiredMixin, DetailView):
         kwargs['is_paginated'] = page.has_other_pages()
 
         return super(UserProfileView, self).get_context_data(**kwargs)
+
+
+class UsersProfilesListView(PermissionRequiredMixin, ListView):
+    model = Profile
+    context_object_name = 'profiles'
+    template_name = 'profiles_list.html'
+    permission_required = 'webapp.change_user_in_own_project'
+
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        return queryset
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super().get_context_data(object_list=object_list, **kwargs)
+        return context
 
 

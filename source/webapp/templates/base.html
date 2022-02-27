@@ -32,9 +32,14 @@
                     {% else %}
                         {% block nav %}{% endblock %}
                         {% if perms.webapp.add_projectmodel %}
-                        <li class="nav-item">
-                            <a class="nav-link" href="{% url 'webapp:project_create' %}">Создать проект</a>
-                        </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{% url 'webapp:project_create' %}">Создать проект</a>
+                            </li>
+                        {% endif %}
+                        {% if perms.webapp.change_user_in_own_project %}
+                            <li class="nav-item">
+                                <a class="nav-link" href="{% url 'accounts:users_profiles_list' %}">Список профилей</a>
+                            </li>
                         {% endif %}
                         <li class="nav-item">
                             <a class="nav-link" href="{% url 'webapp:issue_list' %}">Список задач</a>
