@@ -31,7 +31,9 @@
         <h2>Список участников:</h2>
         <ul class="list-group list-group-flush">
             {% for user_pr in projectmodel.users.all %}
-                <li class="list-group-item">{{ user_pr.username }}</li>
+                <li class="list-group-item">
+                    <a href="{% url 'accounts:user_profile' pk=user_pr.pk %}">{{ user_pr.username }}</a>
+                </li>
             {% empty %}
                 <li>В проекте пока нет пользователей.</li>
             {% endfor %}
