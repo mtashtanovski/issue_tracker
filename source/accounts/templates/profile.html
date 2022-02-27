@@ -3,6 +3,16 @@
 
 {% block title %}Профиль {{ user.pk }}{% endblock title %}
 
+{% block nav %}
+    {% if user_object == user %}
+        <li class="nav-item">
+            <a class="nav-link" href="{% url 'accounts:update_user' %}">Обновить профиль</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{% url 'accounts:change_password' %}">Изменить пароль</a>
+        </li>
+    {% endif %}
+{% endblock %}
 
 {% block content %}
     <div class="container">

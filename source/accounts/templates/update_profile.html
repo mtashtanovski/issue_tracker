@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Профиль {{ user.pk }}{% endblock title %}
+
+{% block nav %}
+    <li class="nav-item">
+        <a class="nav-link" href="{% url "accounts:user_profile" user.pk %}">Назад</a>
+    </li>
+{% endblock nav %}
+
+{% block content %}
+    <div class="container">
+        <h2>Обновление профиля</h2>
+    </div>
+    <div class="container">
+        <form method="post" enctype="multipart/form-data" class="row g-3">
+            {% csrf_token %}
+            {% include "partials/form.html" with fields_only=True %}
+            {% include "partials/form.html" with fields_only=True form=profile_form %}
+            <input type="submit" value="Обновить">
+        </form>
+    </div>
+
+{% endblock content %}
+
